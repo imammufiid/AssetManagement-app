@@ -13,8 +13,13 @@
     <string name="no_rangka">00000000000000</string>
     <string name="text_no_rangka">No Rangka</string>
     <string name="text_ganti_oli">Ganti Oli Terakhir</string>
-    <string name="ganti_oli">01 Januari 2020, %s KM</string>
+    <string name="ganti_oli">Ganti Oli</string>
+    <string name="tanggal_ganti_oli">01 Januari 2020, %s KM</string>
     <string name="text_ganti_oli_berikutnya">Ganti Oli Berikutnya</string>
-    <string name="ganti_oli_berikutnya">01 Januari 2020</string>
+    <string name="tanggal_ganti_oli_berikutnya">01 Januari 2020</string>
     <string name="text_merk_mobil">Merk Mobil</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="save">Simpan</string>
+    <string name="owner_name">Nama Pemilik</string>
+    <string name="edit">Edit</string>
 </resources>
