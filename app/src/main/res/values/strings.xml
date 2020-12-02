@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">AssetManagement</string>
+    <string name="app_name">Asset Management</string>
+    <string name="add_data">Tambah Data</string>
+    <string name="plat_mobil">B 1010 BB</string>
+    <string name="merk_mobil">Toyota</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Masuk</string>
+    <string name="detail">Detail</string>
+    <string name="text_plat_mobil">Plat Mobil</string>
+    <string name="no_mesin">000000000000</string>
+    <string name="text_no_mesin">No Mesin</string>
+    <string name="no_rangka">00000000000000</string>
+    <string name="text_no_rangka">No Rangka</string>
+    <string name="text_ganti_oli">Ganti Oli Terakhir</string>
+    <string name="ganti_oli">01 Januari 2020, %s KM</string>
+    <string name="text_ganti_oli_berikutnya">Ganti Oli Berikutnya</string>
+    <string name="ganti_oli_berikutnya">01 Januari 2020</string>
+    <string name="text_merk_mobil">Merk Mobil</string>
 </resources>
