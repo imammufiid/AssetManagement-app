@@ -1,11 +1,13 @@
 package com.mufiid.assetmanagement.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.mufiid.assetmanagement.R
+import com.mufiid.assetmanagement.ui.addupdate.AddUpdateActivity
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.add -> {
-                Toast.makeText(this, "Add Data", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, AddUpdateActivity::class.java))
                 true
             }
             else -> false

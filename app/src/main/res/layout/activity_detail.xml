@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="6dp"
+    android:theme="@style/Theme.MaterialComponents.Light"
     tools:context=".ui.detail.DetailActivity">
 
     <ScrollView
@@ -187,7 +188,7 @@
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:layout_marginTop="4dp"
-                        android:text="@string/ganti_oli"
+                        android:text="@string/tanggal_ganti_oli"
                         android:textColor="@color/colorSecondaryText"/>
                 </LinearLayout>
             </LinearLayout>
@@ -222,10 +223,20 @@
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:layout_marginTop="4dp"
-                        android:text="@string/ganti_oli_berikutnya"
+                        android:text="@string/tanggal_ganti_oli_berikutnya"
                         android:textColor="@color/colorSecondaryText"/>
                 </LinearLayout>
             </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:padding="18dp"
+                android:text="@string/edit"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textColor="@color/colorPrimaryText" />
         </LinearLayout>
     </ScrollView>
 
