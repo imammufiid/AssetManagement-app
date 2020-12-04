@@ -12,31 +12,31 @@ import retrofit2.HttpException as HttpException
 
 class LoginViewModel: ViewModel() {
 
-    private var state: SingleLiveEvent<UserState> = SingleLiveEvent()
+    private var state: SingleLiveEvent<AuthState> = SingleLiveEvent()
     private var api = ApiClient.getInstance()
 
     fun login(email: String?, password: String?) {
-        state.value = UserState.IsLoading(true)
+        state.value = AuthState.IsLoading(true)
         CompositeDisposable().add(api.login(email, password).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Log.d("LOGLOGIN", it.toString())
                 when (it.status) {
-                    200 -> state.value = it.data?.let { data -> UserState.IsSuccess(data) }
-                    400 -> state.value = UserState.IsFailed(it.message)
-                    else -> state.value = UserState.IsFailed(it.message)
+                    200 -> state.value = it.data?.let { data -> AuthState.IsSuccess(data) }
+                    400 -> state.value = AuthState.IsFailed(it.message)
+                    else -> state.value = AuthState.IsFailed(it.message)
                 }
-                state.value = UserState.IsLoading()
+                state.value = AuthState.IsLoading()
             }, {
                 val httpException = it as HttpException
                 when(httpException.code()) {
                     400 -> {
                         val message = "User Not Found"
-                        state.value = UserState.Error(message)
+                        state.value = AuthState.Error(message)
                     }
-                    else -> state.value = UserState.Error(it.message())
+                    else -> state.value = AuthState.Error(it.message())
                 }
-                state.value = UserState.IsLoading()
+                state.value = AuthState.IsLoading()
             })
         )
     }
@@ -44,15 +44,15 @@ class LoginViewModel: ViewModel() {
     fun getState() = state
 }
 
-sealed class UserState {
-    data class ShowToast(var message: String) : UserState()
-    data class IsLoading(var state: Boolean = false): UserState()
-    data class Error(var err: String): UserState()
-    data class IsSuccess(var user: User) : UserState()
-    data class IsFailed(var message: String? = null): UserState()
-    data class UserValidation(
+sealed class AuthState {
+    data class ShowToast(var message: String) : AuthState()
+    data class IsLoading(var state: Boolean = false): AuthState()
+    data class Error(var err: String): AuthState()
+    data class IsSuccess(var user: User) : AuthState()
+    data class IsFailed(var message: String? = null): AuthState()
+    data class AuthValidation(
         var username: String? = null,
         var password: String? = null
-    ): UserState()
-    object Reset: UserState()
+    ): AuthState()
+    object Reset: AuthState()
 }

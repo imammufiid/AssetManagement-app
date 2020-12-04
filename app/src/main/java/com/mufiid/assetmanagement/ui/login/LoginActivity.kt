@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mufiid.assetmanagement.R
 import com.mufiid.assetmanagement.helpers.CustomView
-import com.mufiid.assetmanagement.ui.MainActivity
 import com.mufiid.assetmanagement.ui.home.HomeActivity
 import com.mufiid.assetmanagement.utils.Constants
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -49,28 +48,28 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun handleUIState(userState: UserState?) {
-        when (userState) {
-            is UserState.Reset -> {
+    private fun handleUIState(authState: AuthState?) {
+        when (authState) {
+            is AuthState.Reset -> {
                 setUsernameError(null)
                 setPasswordError(null)
             }
-            is UserState.ShowToast -> showToast(userState.message)
-            is UserState.IsSuccess -> isSuccess(userState)
-            is UserState.IsFailed -> {
+            is AuthState.ShowToast -> showToast(authState.message)
+            is AuthState.IsSuccess -> isSuccess(authState)
+            is AuthState.IsFailed -> {
                 isLoading(false)
-                userState.message?.let { message -> showToast(message) }
+                authState.message?.let { message -> showToast(message) }
             }
-            is UserState.Error -> {
+            is AuthState.Error -> {
                 isLoading(false)
-                showToast(userState.err, false)
+                showToast(authState.err, false)
             }
-            is UserState.IsLoading -> isLoading(userState.state)
-            is UserState.UserValidation -> {
-                userState.username?.let {
+            is AuthState.IsLoading -> isLoading(authState.state)
+            is AuthState.AuthValidation -> {
+                authState.username?.let {
                     setUsernameError(it)
                 }
-                userState.password?.let {
+                authState.password?.let {
                     setPasswordError(it)
                 }
             }
@@ -98,7 +97,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun isSuccess(it: UserState.IsSuccess) {
+    private fun isSuccess(it: AuthState.IsSuccess) {
         Constants.setUserData(this, it.user)
         Constants.setIsLoggedIn(this, true)
         startActivity(Intent(this, HomeActivity::class.java)).also {
