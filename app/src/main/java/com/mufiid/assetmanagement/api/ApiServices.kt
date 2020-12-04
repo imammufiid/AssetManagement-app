@@ -1,6 +1,8 @@
 package com.mufiid.assetmanagement.api
 
+import com.mufiid.assetmanagement.models.User
 import com.mufiid.assetmanagement.responses.MessageResponse
+import com.mufiid.assetmanagement.responses.WrappedResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -14,5 +16,5 @@ interface ApiServices {
     fun login(
         @Field("username") username: String?,
         @Field("password") password: String?
-    ): Observable<MessageResponse>
+    ): Observable<WrappedResponse<User>>
 }
