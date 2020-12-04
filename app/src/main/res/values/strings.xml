@@ -22,4 +22,7 @@
     <string name="save">Simpan</string>
     <string name="owner_name">Nama Pemilik</string>
     <string name="edit">Edit</string>
+    <string name="loading">Loading...</string>
+    <string name="simple_message">Message</string>
+    <string name="icon_toast">Icon Toast</string>
 </resources>
