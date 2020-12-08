@@ -125,7 +125,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_ganti_oli_berikutnya"
+        android:text="@string/next_ganti_oli"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryText"
@@ -137,10 +137,11 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_username"
+            android:id="@+id/et_next_date_oil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/tanggal"
+            android:enabled="false"
             android:inputType="text"
             android:drawablePadding="20dp" />
 

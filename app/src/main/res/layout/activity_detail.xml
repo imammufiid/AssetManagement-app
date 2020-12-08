@@ -39,6 +39,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/text_plat_mobil"
+                        android:textStyle="bold"
                         android:textColor="@color/colorPrimaryText"/>
 
                     <TextView
@@ -46,7 +47,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:text="@string/plat_mobil"
                         android:textColor="@color/colorSecondaryText"/>
@@ -74,6 +74,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/text_merk_mobil"
+                        android:textStyle="bold"
                         android:textColor="@color/colorPrimaryText"/>
 
                     <TextView
@@ -81,7 +82,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:text="@string/merk_mobil"
                         android:textColor="@color/colorSecondaryText"/>
@@ -109,6 +109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/text_no_mesin"
+                        android:textStyle="bold"
                         android:textColor="@color/colorPrimaryText"/>
 
                     <TextView
@@ -116,7 +117,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:text="@string/no_mesin"
                         android:textColor="@color/colorSecondaryText"/>
@@ -144,6 +144,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/text_no_rangka"
+                        android:textStyle="bold"
                         android:textColor="@color/colorPrimaryText"/>
 
                     <TextView
@@ -151,7 +152,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:text="@string/no_rangka"
                         android:textColor="@color/colorSecondaryText"/>
@@ -178,7 +178,43 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/text_ganti_oli"
+                        android:text="@string/owner_name"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryText"/>
+
+                    <TextView
+                        android:id="@+id/tv_owner_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/owner_name"
+                        android:textColor="@color/colorSecondaryText"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_person"
+                    android:layout_marginRight="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ganti_oli"
+                        android:textStyle="bold"
                         android:textColor="@color/colorPrimaryText"/>
 
                     <TextView
@@ -186,7 +222,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:text="@string/tanggal_ganti_oli"
                         android:textColor="@color/colorSecondaryText"/>
@@ -213,7 +248,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/text_ganti_oli_berikutnya"
+                        android:text="@string/next_ganti_oli"
+                        android:textStyle="bold"
                         android:textColor="@color/colorPrimaryText"/>
 
                     <TextView
@@ -221,22 +257,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:text="@string/tanggal_ganti_oli_berikutnya"
                         android:textColor="@color/colorSecondaryText"/>
                 </LinearLayout>
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_edit"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:padding="18dp"
-                android:text="@string/edit"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:textColor="@color/colorPrimaryText" />
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:padding="18dp"
+                    android:text="@string/delete"
+                    android:drawableLeft="@drawable/ic_baseline_delete_24"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:textColor="@color/colorPrimaryText" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:padding="18dp"
+                    android:text="@string/edit"
+                    android:drawableLeft="@drawable/ic_edit"
+                    android:backgroundTint="@color/colorPrimary"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:textColor="@color/colorTextIcon" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 
