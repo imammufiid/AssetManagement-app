@@ -16,7 +16,7 @@ data class User(
 	@field:SerializedName("username")
     var username: String? = null,
 
-    @field:SerializedName("token")
+    @field:SerializedName("key")
     var token: String? = null,
 
 	@field:SerializedName("status")
