@@ -12,15 +12,15 @@ interface ApiServices {
 
     // LOGIN
     @FormUrlEncoded
-    @POST("auth")
+    @POST("Auth")
     fun login(
         @Field("username") username: String?,
         @Field("password") password: String?
     ): Observable<WrappedResponse<User>>
 
-    @GET("assets")
+    @GET("Assets")
     fun getData(
-        @Header("Authorization") token: String?,
+        @Header("API-KEY-TOKEN") token: String?,
         @Query("user_id") userId: String?
     ): Observable<WrappedListResponses<Asset>>
 }
