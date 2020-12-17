@@ -28,8 +28,17 @@ data class Asset(
 	@field:SerializedName("plat_mobil")
 	val platMobil: String? = null,
 
+	@field:SerializedName("id_merk")
+	val idMerk: String? = null,
+
 	@field:SerializedName("merk_mobil")
 	val merkMobil: String? = null,
+
+	@field:SerializedName("model_mobil")
+	val modelMobil: String? = null,
+
+	@field:SerializedName("model_id")
+	val modelId: String? = null,
 
 	@field:SerializedName("created_at")
 	val createdAt: String? = null,
