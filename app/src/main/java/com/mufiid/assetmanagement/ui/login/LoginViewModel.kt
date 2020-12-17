@@ -1,6 +1,5 @@
 package com.mufiid.assetmanagement.ui.login
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.mufiid.assetmanagement.api.ApiClient
 import com.mufiid.assetmanagement.models.User
@@ -20,7 +19,6 @@ class LoginViewModel: ViewModel() {
         CompositeDisposable().add(api.login(email, password).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Log.d("LOGLOGIN", it.toString())
                 when (it.status) {
                     200 -> state.value = it.data?.let { data -> AuthState.IsSuccess(data) }
                     400 -> state.value = AuthState.IsFailed(it.message)
