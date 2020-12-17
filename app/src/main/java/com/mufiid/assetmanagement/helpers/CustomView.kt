@@ -10,7 +10,7 @@ import com.mufiid.assetmanagement.R
 
 object CustomView {
 
-    fun customToast(context: Context?, message: String?, isShort: Boolean? = true, isSuccess: Boolean?) {
+    fun customToast(context: Context?, message: String?, isShort: Boolean? = true, isSuccess: Boolean? = false) {
         val layoutInflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = layoutInflater.inflate(R.layout.custom_toast, null)
         val textMessage = view.findViewById(R.id.text) as TextView
