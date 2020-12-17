@@ -16,7 +16,7 @@ class AssetAdapter(private val onClick: (Asset) -> Unit) :
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(asset: Asset) {
             itemView.plat_mobil.text = asset.platMobil
-            itemView.merk_mobil.text = asset.merkMobil
+            itemView.merk_mobil.text = asset.modelMobil
             itemView.setOnClickListener {
                 onClick(asset)
             }
