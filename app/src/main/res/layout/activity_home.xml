@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +8,10 @@
     tools:context=".ui.home.HomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:fitsSystemWindows="false">
 
         <androidx.cardview.widget.CardView
@@ -33,23 +35,39 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_container_asset"
+    <ProgressBar
+        android:id="@+id/progress_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        shimmer:duration="800"
-        android:visibility="gone">
+        android:layout_below="@id/app_bar_layout"
+        android:layout_centerHorizontal="true"/>
 
-        <include
-            layout="@layout/shimmer_list_data"/>
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_data"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_data"/>
+        android:layout_below="@id/progress_bar"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp">
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_data"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_add"/>
+
+</RelativeLayout>

@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Asset Management</string>
-    <string name="add_data">Tambah Data</string>
-    <string name="plat_mobil">B 1010 BB</string>
-    <string name="merk_mobil">Toyota</string>
+
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Masuk</string>
     <string name="detail">Detail</string>
+
+    <string name="plat_mobil">B 1010 BB</string>
+    <string name="merk_mobil">Toyota</string>
     <string name="text_plat_mobil">Plat Mobil</string>
     <string name="no_mesin">000000000000</string>
     <string name="text_no_mesin">No Mesin</string>
@@ -16,13 +17,22 @@
     <string name="tanggal_ganti_oli">01 Januari 2020</string>
     <string name="next_ganti_oli">Ganti Oli Mesin Berikutnya</string>
     <string name="tanggal_ganti_oli_berikutnya">01 Januari 2020</string>
+    <string name="text_model_mobil">Model Mobil</string>
     <string name="text_merk_mobil">Merk Mobil</string>
     <string name="tanggal">Tanggal</string>
-    <string name="save">Simpan</string>
     <string name="owner_name">Nama Pemilik</string>
+
+    <string name="add_data">Tambah Data</string>
+    <string name="save">Simpan</string>
     <string name="edit">Edit</string>
+    <string name="delete">Hapus</string>
+    <string name="logout">Logout</string>
+
     <string name="loading">Loading...</string>
     <string name="simple_message">Message</string>
     <string name="icon_toast">Icon Toast</string>
-    <string name="delete">Hapus</string>
+    <string name="confirmation">Konfirmasi</string>
+    <string name="question_confirmation">Anda Yakin Menghapus data ini?</string>
+    <string name="yes">Iya</string>
+    <string name="no">Tidak</string>
 </resources>
