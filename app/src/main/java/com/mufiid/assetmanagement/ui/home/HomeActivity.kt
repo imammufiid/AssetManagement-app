@@ -5,20 +5,24 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mufiid.assetmanagement.R
 import com.mufiid.assetmanagement.adapter.AssetAdapter
+import com.mufiid.assetmanagement.helpers.CustomView
 import com.mufiid.assetmanagement.models.Asset
 import com.mufiid.assetmanagement.ui.addupdate.AddUpdateActivity
 import com.mufiid.assetmanagement.ui.detail.DetailActivity
+import com.mufiid.assetmanagement.ui.login.LoginActivity
 import com.mufiid.assetmanagement.utils.Constants
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var adapter: AssetAdapter
 
@@ -28,12 +32,35 @@ class HomeActivity : AppCompatActivity() {
 
         initSupportActionBar()
         init()
+        searchAsset()
+    }
+
+    private fun searchAsset() {
+        search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                homeViewModel.searchData(
+                    Constants.getUserData(this@HomeActivity)?.token,
+                    query,
+                    Constants.getUserData(this@HomeActivity)?.id
+                )
+                search_view.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
     }
 
     override fun onResume() {
         super.onResume()
-        setRecyclerView()
+        search_view.setQuery("", false)
+        search_view.isIconified = true
         showData()
+        setRecyclerView()
     }
 
     private fun init() {
@@ -45,6 +72,14 @@ class HomeActivity : AppCompatActivity() {
         homeViewModel.getState().observer(this, Observer {
             handleUIState(it)
         })
+
+        btn_add.setOnClickListener(this)
+
+        swipe_refresh?.setOnRefreshListener {
+            swipe_refresh.isRefreshing = true
+            showDataSwipeRefresh()
+            swipe_refresh.isRefreshing = false
+        }
     }
 
     private fun handleUIState(it: AssetState?) {
@@ -55,11 +90,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showLoading(state: Boolean) {
         if(state) {
-            shimmer_container_asset.visibility = View.VISIBLE
-            shimmer_container_asset.startShimmer()
+            progress_bar.visibility = View.VISIBLE
         } else {
-            shimmer_container_asset.stopShimmer()
-            shimmer_container_asset.visibility = View.GONE
+            progress_bar.visibility = View.GONE
         }
     }
 
@@ -77,6 +110,19 @@ class HomeActivity : AppCompatActivity() {
     private fun showData() {
         Constants.getUserData(this)?.let {
             homeViewModel.getAllData(it.id, it.token)
+        }
+        homeViewModel.getAssets().observe(this, Observer {
+            if(it != null) {
+                adapter.setAsset(it)
+            } else {
+                CustomView.customToast(this, "Data Not Available")
+            }
+        })
+    }
+
+    private fun showDataSwipeRefresh() {
+        Constants.getUserData(this)?.let {
+            homeViewModel.getAllDataSwipeRefresh(it.id, it.token)
         }
         homeViewModel.getAssets().observe(this, Observer {
             if(it != null) {
@@ -106,10 +152,30 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.add -> {
+                AlertDialog.Builder(this).apply {
+                    setMessage("Apa anda yakin Keluar?")
+                    setPositiveButton("Iya") { _, _ ->
+                        Constants.clear(this@HomeActivity)
+                        startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+                        finish()
+                    }
+                    setNegativeButton("Tidak") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                }.show()
+                true
+
+            }
+            else -> false
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id) {
+            R.id.btn_add -> {
                 startActivity(Intent(this, AddUpdateActivity::class.java))
                 true
             }
-            else -> false
         }
     }
 }
