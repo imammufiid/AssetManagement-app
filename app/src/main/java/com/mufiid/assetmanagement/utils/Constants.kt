@@ -6,7 +6,8 @@ import com.mufiid.assetmanagement.models.User
 
 object Constants {
 
-    const val API_ENDPOINT = ""
+//    const val API_ENDPOINT = "http://192.168.1.5/projects/rest-am/"
+    const val API_ENDPOINT = "http://demo-restam.sanscoding.com/"
 
     fun getUserData(context: Context): User? {
         val pref = context.getSharedPreferences("USER", Context.MODE_PRIVATE)
@@ -35,6 +36,13 @@ object Constants {
         val pref = context.getSharedPreferences("USER", Context.MODE_PRIVATE)
         pref.edit {
             putBoolean("IS_LOGGED_IN", isLoggedIn)
+        }
+    }
+
+    fun clear(context: Context) {
+        val pref = context.getSharedPreferences("USER", Context.MODE_PRIVATE)
+        pref.edit {
+            clear()
         }
     }
 }
